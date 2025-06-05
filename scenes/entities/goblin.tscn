@@ -1,0 +1,101 @@
+[gd_scene load_steps=9 format=3 uid="uid://dia82c3syi06o"]
+
+[ext_resource type="Texture2D" uid="uid://dmubr3huvnx3j" path="res://assets/monsters.png" id="1_3mt2j"]
+[ext_resource type="Script" uid="uid://b7rq8nqutbndd" path="res://scripts/entity.gd" id="1_g0jgq"]
+[ext_resource type="AudioStream" uid="uid://b1u5bc57khk67" path="res://assets/blade_hit_08.wav" id="2_g0jgq"]
+
+[sub_resource type="Animation" id="Animation_a53x7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_r3082"]
+resource_name = "attack"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 16), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ed2xj"]
+_data = {
+&"RESET": SubResource("Animation_a53x7"),
+&"attack": SubResource("Animation_r3082")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5oh5w"]
+bg_color = Color(1, 0.15057, 0.413541, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_401ek"]
+bg_color = Color(0.286358, 0.792448, 0, 1)
+
+[node name="goblin" type="Node2D"]
+script = ExtResource("1_g0jgq")
+size = 1.0
+max_hp = 5.0
+attackPower = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3mt2j")
+region_enabled = true
+region_rect = Rect2(64, 0, 32, 32)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ed2xj")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_g0jgq")
+volume_db = -20.0
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = -12.0
+theme_override_styles/background = SubResource("StyleBoxFlat_5oh5w")
+theme_override_styles/fill = SubResource("StyleBoxFlat_401ek")
+show_percentage = false

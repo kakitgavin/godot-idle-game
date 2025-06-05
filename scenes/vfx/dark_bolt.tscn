@@ -1,0 +1,96 @@
+[gd_scene load_steps=15 format=3 uid="uid://ciqycoa18dpp3"]
+
+[ext_resource type="Texture2D" uid="uid://cf01jres5fpdu" path="res://assets/Dark-Bolt.png" id="1_auvvj"]
+[ext_resource type="Script" uid="uid://dwlqjepdr00kv" path="res://scripts/vfx.gd" id="2_1tbx6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1tbx6"]
+atlas = ExtResource("1_auvvj")
+region = Rect2(0, 0, 64, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6xia"]
+atlas = ExtResource("1_auvvj")
+region = Rect2(64, 0, 64, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yybvl"]
+atlas = ExtResource("1_auvvj")
+region = Rect2(128, 0, 64, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1wvn"]
+atlas = ExtResource("1_auvvj")
+region = Rect2(192, 0, 64, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymd21"]
+atlas = ExtResource("1_auvvj")
+region = Rect2(256, 0, 64, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8wd8"]
+atlas = ExtResource("1_auvvj")
+region = Rect2(320, 0, 64, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cad5w"]
+atlas = ExtResource("1_auvvj")
+region = Rect2(384, 0, 64, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vn7n2"]
+atlas = ExtResource("1_auvvj")
+region = Rect2(448, 0, 64, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aaqul"]
+atlas = ExtResource("1_auvvj")
+region = Rect2(512, 0, 64, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fic3q"]
+atlas = ExtResource("1_auvvj")
+region = Rect2(576, 0, 64, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sc1c6"]
+atlas = ExtResource("1_auvvj")
+region = Rect2(640, 0, 64, 88)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c7t1b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1tbx6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6xia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yybvl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1wvn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymd21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8wd8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cad5w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vn7n2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aaqul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fic3q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sc1c6")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="DarkBolt" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_c7t1b")
+autoplay = "default"
+frame = 10
+frame_progress = 1.0
+script = ExtResource("2_1tbx6")
