@@ -74,8 +74,9 @@ bg_color = Color(0.286358, 0.792448, 0, 1)
 [node name="Orc" type="Node2D"]
 script = ExtResource("1_bfp0d")
 size = 2.0
-max_hp = 20.0
-attackPower = 3.0
+max_hp = 10.0
+attackPower = 2.0
+attackSpeed = 0.3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1.43051e-06, -1.43051e-06)
@@ -101,3 +102,5 @@ offset_bottom = -40.0
 theme_override_styles/background = SubResource("StyleBoxFlat_hu8b3")
 theme_override_styles/fill = SubResource("StyleBoxFlat_s5mlm")
 show_percentage = false
+
+[node name="AttackTimer" type="Timer" parent="."]

@@ -76,6 +76,7 @@ script = ExtResource("1_g0jgq")
 size = 1.0
 max_hp = 5.0
 attackPower = 1.0
+attackSpeed = 0.5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_3mt2j")
@@ -99,3 +100,5 @@ offset_bottom = -12.0
 theme_override_styles/background = SubResource("StyleBoxFlat_5oh5w")
 theme_override_styles/fill = SubResource("StyleBoxFlat_401ek")
 show_percentage = false
+
+[node name="AttackTimer" type="Timer" parent="."]

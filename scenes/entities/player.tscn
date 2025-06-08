@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cxhnhgk34uugf"]
+[gd_scene load_steps=10 format=3 uid="uid://cxhnhgk34uugf"]
 
 [ext_resource type="Texture2D" uid="uid://cpsopu1y4etb3" path="res://assets/rogues.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://b7rq8nqutbndd" path="res://scripts/entity.gd" id="1_g2els"]
+[ext_resource type="PackedScene" uid="uid://dc7a65un5dg0k" path="res://scenes/vfx/hit_effect_1.tscn" id="2_42nxq"]
 [ext_resource type="AudioStream" uid="uid://c68nqd4444tvc" path="res://assets/body_hit_small_11.wav" id="3_qhqgy"]
 
 [sub_resource type="Animation" id="Animation_qhqgy"]
@@ -73,6 +74,11 @@ bg_color = Color(0.286358, 0.792448, 0, 1)
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_g2els")
+size = 1.0
+max_hp = 10.0
+attackPower = 1.0
+attackSpeed = 1.0
+vfx = ExtResource("2_42nxq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_3vyb7")
@@ -96,3 +102,5 @@ offset_bottom = -24.0
 theme_override_styles/background = SubResource("StyleBoxFlat_qhqgy")
 theme_override_styles/fill = SubResource("StyleBoxFlat_dqkch")
 show_percentage = false
+
+[node name="AttackTimer" type="Timer" parent="."]

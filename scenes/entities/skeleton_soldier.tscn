@@ -74,8 +74,9 @@ bg_color = Color(0.286358, 0.792448, 0, 1)
 [node name="SkeletonSoldier" type="Node2D"]
 script = ExtResource("1_wfli1")
 size = 1.0
-max_hp = 10.0
+max_hp = 5.0
 attackPower = 1.0
+attackSpeed = 0.5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_lojsm")
@@ -99,3 +100,5 @@ offset_bottom = -24.0
 theme_override_styles/background = SubResource("StyleBoxFlat_tilo8")
 theme_override_styles/fill = SubResource("StyleBoxFlat_pbvs3")
 show_percentage = false
+
+[node name="AttackTimer" type="Timer" parent="."]
