@@ -19,7 +19,7 @@ func _ready() -> void:
 		createSlot()
 	# connect item signals
 	for item:Control in get_tree().get_nodes_in_group('item'):
-		item.find_child('Panel').mouse_entered.connect(_cursor_enter_item.bind(item))
+		item.find_child('Panel').gui_input.connect(_cursor_in_item.bind(item))
 		item.find_child('Panel').mouse_exited.connect(_cursor_exit_item)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -56,7 +56,7 @@ func createSlot():
 	var newSlot = slotScene.instantiate()
 	grid_container.add_child(newSlot)
 
-func _cursor_enter_item(item):
+func _cursor_in_item(event: InputEvent, item: Control):
 	if not isDragging:
 		mouseCanDrag = true
 		selectedItem = item
