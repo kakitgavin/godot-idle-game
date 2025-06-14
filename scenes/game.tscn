@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://djt4cievt2i6w" path="res://scripts/game.gd" id="1_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://b6rm4yfgkjaj1" path="res://assets/tiles.png" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://cxhnhgk34uugf" path="res://scenes/entities/player.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://bh6enebonknhr" path="res://scenes/backpack_manager.tscn" id="5_iywne"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yqjtg"]
 texture = ExtResource("1_uwrxv")
@@ -143,18 +144,6 @@ sources/0 = SubResource("TileSetAtlasSource_yqjtg")
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lnu2h"]
 bg_color = Color(0.957676, 0.828514, 7.70092e-07, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lbhrr"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_size = 3
-
 [node name="Game" type="Node2D"]
 script = ExtResource("1_lbhrr")
 
@@ -165,6 +154,7 @@ zoom = Vector2(2, 2)
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAIAAAAAAAEAAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAMAAAAAAAIAAAAAAAQAAAAAAAIAAAAAAAUAAAAAAAIAAAAAAAYAAAAAAAIAAAAAAAcAAAAAAAIAAAAAAAgAAAAAAAIAAAAAAAkAAAAAAAIAAAAAAAoAAAAAAAIAAAAAAAsAAAAAAAIAAAABAAAAAAABAAIAAAABAAEAAAAAAAcAAAABAAIAAAAAAAcAAAABAAMAAAAAAAcAAAABAAQAAAAAAAcAAAABAAUAAAAAAAcAAAABAAYAAAAAAAcAAAABAAcAAAAAAAcAAAABAAgAAAAAAAcAAAABAAkAAAAAAAcAAAABAAoAAAAAAAcAAAABAAsAAAAAAAcAAAACAAAAAAABAAIAAAACAAEAAAAAAAcAAAACAAIAAAAAAAcAAAACAAMAAAAAAAcAAAACAAQAAAAAAAcAAAACAAUAAAAAAAcAAAACAAYAAAAAAAcAAAACAAcAAAAAAAcAAAACAAgAAAAAAAcAAAACAAkAAAAAAAcAAAACAAoAAAAAAAcAAAACAAsAAAAAAAcAAAADAAAAAAABAAIAAAADAAEAAAAAAAcAAAADAAIAAAAAAAcAAAADAAMAAAAAAAcAAAADAAQAAAAAAAcAAAADAAUAAAAAAAcAAAADAAYAAAAAAAcAAAADAAcAAAAAAAcAAAADAAgAAAAAAAcAAAADAAkAAAAAAAcAAAADAAoAAAAAAAcAAAADAAsAAAAAAAcAAAAEAAAAAAABAAIAAAAEAAEAAAAAAAcAAAAEAAIAAAAAAAcAAAAEAAMAAAAAAAcAAAAEAAQAAAAAAAcAAAAEAAUAAAAAAAcAAAAEAAYAAAAAAAcAAAAEAAcAAAAAAAcAAAAEAAgAAAAAAAcAAAAEAAkAAAAAAAcAAAAEAAoAAAAAAAcAAAAEAAsAAAAAAAcAAAAFAAAAAAABAAIAAAAFAAEAAAAAAAcAAAAFAAIAAAAAAAcAAAAFAAMAAAAAAAcAAAAFAAQAAAAAAAcAAAAFAAUAAAAAAAcAAAAFAAYAAAAAAAcAAAAFAAcAAAAAAAcAAAAFAAgAAAAAAAcAAAAFAAkAAAAAAAcAAAAFAAoAAAAAAAcAAAAFAAsAAAAAAAcAAAAGAAAAAAABAAIAAAAGAAEAAAAAAAcAAAAGAAIAAAAAAAcAAAAGAAMAAAAAAAcAAAAGAAQAAAAAAAcAAAAGAAUAAAAAAAcAAAAGAAYAAAAAAAcAAAAGAAcAAAAAAAcAAAAGAAgAAAAAAAcAAAAGAAkAAAAAAAcAAAAGAAoAAAAAAAcAAAAGAAsAAAAAAAcAAAAHAAAAAAABAAIAAAAHAAEAAAAAAAcAAAAHAAIAAAAAAAcAAAAHAAMAAAAAAAcAAAAHAAQAAAAAAAcAAAAHAAUAAAAAAAcAAAAHAAYAAAAAAAcAAAAHAAcAAAAAAAcAAAAHAAgAAAAAAAcAAAAHAAkAAAAAAAcAAAAHAAoAAAAAAAcAAAAHAAsAAAAAAAcAAAAIAAAAAAABAAIAAAAIAAEAAAAAAAcAAAAIAAIAAAAAAAcAAAAIAAMAAAAAAAcAAAAIAAQAAAAAAAcAAAAIAAUAAAAAAAcAAAAIAAYAAAAAAAcAAAAIAAcAAAAAAAcAAAAIAAgAAAAAAAcAAAAIAAkAAAAAAAcAAAAIAAoAAAAAAAcAAAAIAAsAAAAAAAcAAAAJAAAAAAAAAAIAAAAJAAEAAAAAAAIAAAAJAAIAAAAAAAIAAAAJAAMAAAAAAAIAAAAJAAQAAAAAAAIAAAAJAAUAAAAAAAIAAAAJAAYAAAAAAAIAAAAJAAcAAAAAAAIAAAAJAAgAAAAAAAIAAAAJAAkAAAAAAAIAAAAJAAoAAAAAAAIAAAAJAAsAAAAAAAIAAAAAAAwAAAAAAAIAAAABAAwAAAAAAAcAAAACAAwAAAAAAAcAAAADAAwAAAAAAAcAAAAEAAwAAAAAAAcAAAAFAAwAAAAAAAcAAAAGAAwAAAAAAAcAAAAHAAwAAAAAAAcAAAAIAAwAAAAAAAcAAAAJAAwAAAAAAAIAAAA=")
 tile_set = SubResource("TileSet_lnu2h")
+collision_enabled = false
 
 [node name="Player" parent="." instance=ExtResource("2_yqjtg")]
 position = Vector2(160, 224)
@@ -174,64 +164,61 @@ attackPower = 2.0
 position = Vector2(160, 96)
 
 [node name="Control" type="Control" parent="."]
+visible = false
 z_index = 20
 layout_mode = 3
 anchors_preset = 0
 offset_right = 320.0
-offset_bottom = 416.0
+offset_bottom = 400.0
 
-[node name="EnemiesCountLabel" type="Label" parent="Control"]
+[node name="ColorRect" type="ColorRect" parent="Control"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 40.0
-offset_top = 304.0
-offset_right = -192.0
-offset_bottom = -88.0
-theme_override_font_sizes/font_size = 12
-autowrap_mode = 2
+anchor_left = 0.025
+anchor_top = 0.615385
+anchor_right = 0.975
+anchor_bottom = 0.961538
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.941176)
 metadata/_edit_use_anchors_ = true
 
-[node name="GoldLabel" type="Label" parent="Control"]
+[node name="EnemiesCountLabel" type="Label" parent="Control"]
+visible = false
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 40.0
-offset_top = 352.0
-offset_right = -240.0
-offset_bottom = -41.0
+offset_left = 8.0
+offset_top = 24.0
+offset_right = -248.0
+offset_bottom = -103.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 12
+autowrap_mode = 2
+
+[node name="GoldLabel" type="Label" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 104.0
+offset_right = -256.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_lnu2h")
 horizontal_alignment = 1
 
-[node name="ChooseUpgrades" type="PanelContainer" parent="Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 40.0
-offset_top = 136.0
-offset_right = -40.0
-offset_bottom = -104.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_lbhrr")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/ChooseUpgrades"]
-layout_mode = 2
-
-[node name="UpgradeAttack" type="Button" parent="Control/ChooseUpgrades/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "UPGRADE ATTACK"
-
-[node name="Next" type="Button" parent="Control/ChooseUpgrades/VBoxContainer"]
-layout_mode = 2
-text = "NEXT"
-
-[connection signal="pressed" from="Control/ChooseUpgrades/VBoxContainer/UpgradeAttack" to="." method="_on_upgrade_attack_pressed"]
-[connection signal="pressed" from="Control/ChooseUpgrades/VBoxContainer/Next" to="." method="_on_next_pressed"]
+[node name="BackpackManager" parent="." instance=ExtResource("5_iywne")]
+offset_left = 64.0
+offset_top = 280.0
+offset_right = 64.0
+offset_bottom = 280.0
+metadata/_edit_use_anchors_ = true

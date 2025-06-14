@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2peq046p2ki4"]
+
+[ext_resource type="Script" uid="uid://da43y4jpavm7j" path="res://scripts/slot.gd" id="1_4v6ba"]
+
+[node name="Slot" type="ReferenceRect"]
+custom_minimum_size = Vector2(32, 32)
+border_color = Color(1, 1, 1, 1)
+editor_only = false
+script = ExtResource("1_4v6ba")

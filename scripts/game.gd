@@ -7,10 +7,6 @@ extends Node2D
 @onready var gold_label: Label = $Control/GoldLabel
 @onready var enemies_count_label: Label = $Control/EnemiesCountLabel
 
-@onready var choose_upgrades: PanelContainer = $Control/ChooseUpgrades
-@onready var upgrade_attack: Button = $Control/ChooseUpgrades/VBoxContainer/UpgradeAttack
-@onready var next: Button = $Control/ChooseUpgrades/VBoxContainer/Next
-
 #implement dictionary to init preload texture in the future
 const orc = preload('res://scenes/entities/orc.tscn')
 const skeletonSoldier = preload('res://scenes/entities/skeleton_soldier.tscn')
@@ -19,6 +15,8 @@ const golbin = preload('res://scenes/entities/goblin.tscn')
 
 const hitEffect_1 = preload('res://scenes/vfx/hit_effect_1.tscn')
 const darkBolt = preload('res://scenes/vfx/dark_bolt.tscn')
+
+const itemKey = preload("res://scenes/item_key.tscn")
 
 var enemy: Entity
 var entityArray: Array = [orc, skeletonSoldier, slime, golbin]
@@ -30,7 +28,6 @@ var level = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -45,11 +42,6 @@ func _process(delta: float) -> void:
 
 	gold_label.text = str(gold)
 	enemies_count_label.text = 'Enemies Remaining: ' + str(enemiesRemaining)
-	
-	if enemiesRemaining == 0:
-		choose_upgrades.visible = true
-	else:
-		choose_upgrades.visible = false
 		
 	if player.currentHealth <= 0:
 		get_tree().reload_current_scene()
@@ -57,17 +49,6 @@ func _process(delta: float) -> void:
 func _on_enemy_defeated():
 	gold += 1
 	enemiesRemaining -= 1
-
-
-func _on_upgrade_attack_pressed() -> void:
-	if gold >= 10:
-		player.attackPower += 1
-		gold -= 10
-	else:
-		print('Not enough gold')
-
-func _on_next_pressed() -> void:
-	enemiesRemaining = 2
 
 func _on_entity_attack_timer_timeout(entity, attackPower):
 	if player and enemy:
