@@ -46,10 +46,3 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 8.0
 offset_bottom = 8.0
-
-[node name="ItemKey2" parent="." instance=ExtResource("2_dihp5")]
-layout_mode = 1
-offset_left = 64.0
-offset_top = 72.0
-offset_right = 64.0
-offset_bottom = 72.0

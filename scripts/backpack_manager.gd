@@ -48,6 +48,10 @@ func _physics_process(delta: float) -> void:
 			if item != selectedItem:
 				var shapeToCheck: Shape2D = item.find_child('Area2D').get_child(0).get_shape()
 				isSlotFree = !selectedItemShape.collide(previewTransform, shapeToCheck, item.get_global_transform())
+				if !isSlotFree:
+					return
+			else:
+				isSlotFree = true
 
 func createSlot():
 	var newSlot = slotScene.instantiate()
