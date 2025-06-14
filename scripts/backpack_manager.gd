@@ -10,6 +10,7 @@ var selectedItem: Control
 var offset := Vector2(0, 0)
 var originalPos: Vector2
 var isSlotFree = false
+var isInBoundary = false
 
 var previewPosition: Vector2
 
@@ -33,7 +34,7 @@ func _process(delta: float) -> void:
 			selectedItem.global_position = get_global_mouse_position() - offset
 		elif Input.is_action_just_released("mouseLeftClick"):
 			isDragging = false
-			if isSlotFree:
+			if isSlotFree and isInBoundary:
 				selectedItem.global_position = previewPosition
 			else:
 				selectedItem.global_position = originalPos
@@ -44,7 +45,7 @@ func _physics_process(delta: float) -> void:
 		var previewTransform = selectedItem.get_global_transform()
 		previewTransform.origin = previewPosition
 		var selectedItemShape: Shape2D = selectedItem.find_child('Area2D').get_child(0).get_shape()
-		isSlotFree = area_2d.overlaps_area(selectedItem.find_child('Area2D'))
+		isInBoundary = area_2d.overlaps_area(selectedItem.find_child('Area2D'))
 		for item: Control in get_tree().get_nodes_in_group('item'):
 			if item != selectedItem:
 				var shapeToCheck: Shape2D = item.find_child('Area2D').get_child(0).get_shape()
