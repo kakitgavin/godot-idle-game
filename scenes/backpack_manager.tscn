@@ -13,28 +13,22 @@ script = ExtResource("1_q7lps")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 56.0
-offset_right = 168.0
+offset_right = 256.0
 offset_bottom = 112.0
 color = Color(0, 0, 0, 0.92549)
 
 [node name="GridContainer" type="GridContainer" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.071
-anchor_top = 0.071
-anchor_right = 0.929
-anchor_bottom = 0.929
-offset_left = 0.0479999
-offset_top = 0.0479999
-offset_right = -0.0480042
-offset_bottom = -0.0480042
+offset_left = 96.0
+offset_top = 8.0
+offset_right = 192.0
+offset_bottom = 104.0
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 3
 
 [node name="Area2D" type="Area2D" parent="ColorRect/GridContainer"]
-collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect/GridContainer/Area2D"]
 position = Vector2(48, 48)
@@ -42,7 +36,14 @@ shape = SubResource("RectangleShape2D_q7lps")
 
 [node name="ItemKey" parent="." instance=ExtResource("2_dihp5")]
 layout_mode = 1
-offset_left = 8.0
+offset_left = 32.0
 offset_top = 8.0
-offset_right = 8.0
+offset_right = 32.0
+offset_bottom = 8.0
+
+[node name="ItemKey2" parent="." instance=ExtResource("2_dihp5")]
+layout_mode = 1
+offset_left = 32.0
+offset_top = 8.0
+offset_right = 32.0
 offset_bottom = 8.0

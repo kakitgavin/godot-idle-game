@@ -44,14 +44,13 @@ func _physics_process(delta: float) -> void:
 		var previewTransform = selectedItem.get_global_transform()
 		previewTransform.origin = previewPosition
 		var selectedItemShape: Shape2D = selectedItem.find_child('Area2D').get_child(0).get_shape()
+		isSlotFree = area_2d.overlaps_area(selectedItem.find_child('Area2D'))
 		for item: Control in get_tree().get_nodes_in_group('item'):
 			if item != selectedItem:
 				var shapeToCheck: Shape2D = item.find_child('Area2D').get_child(0).get_shape()
-				isSlotFree = !selectedItemShape.collide(previewTransform, shapeToCheck, item.get_global_transform())
-				if !isSlotFree:
+				isSlotFree = !selectedItemShape.collide(previewTransform, shapeToCheck, item.get_global_transform()) 
+				if isSlotFree == false:
 					return
-			else:
-				isSlotFree = true
 
 func createSlot():
 	var newSlot = slotScene.instantiate()

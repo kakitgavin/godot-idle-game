@@ -217,8 +217,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_lnu2h")
 horizontal_alignment = 1
 
 [node name="BackpackManager" parent="." instance=ExtResource("5_iywne")]
-offset_left = 64.0
+offset_left = 32.0
 offset_top = 280.0
-offset_right = 64.0
+offset_right = 32.0
 offset_bottom = 280.0
 metadata/_edit_use_anchors_ = true
