@@ -46,21 +46,22 @@ func _process(delta: float) -> void:
 		itemInBackpack.append(area.get_parent())
 
 func _physics_process(delta: float) -> void:
-	#if selectedItem:
-		#print(selectedItem.find_child('Area2D').get_child(0).get_shape().get_rect())
-	
 	#check if item can be placed in backpack
 	if selectedItem and isDragging:
 		previewPosition = selectedItem.global_position.snapped(Vector2(32, 32))
-		var selectedItemShape: Shape2D = selectedItem.find_child('Area2D').get_child(0).get_shape()
-		isInBoundary = area_2d.overlaps_area(selectedItem.find_child('Area2D'))
+		var selectedItemRect: Rect2 = selectedItem.find_child('Area2D').get_child(0).get_shape().get_rect()
+		selectedItemRect.position = previewPosition
+		
+		#check if selected item is inside backpack
+		var backpackRect: Rect2 = area_2d.get_child(0).get_shape().get_rect()
+		backpackRect.position = area_2d.global_position
+		isInBoundary = backpackRect.encloses(selectedItemRect)
+		
+		#check collision between items
 		for item: Control in get_tree().get_nodes_in_group('item'):
 			if item != selectedItem:
-				var selectedItemRect: Rect2 = selectedItem.find_child('Area2D').get_child(0).get_shape().get_rect()
-				selectedItemRect.position = previewPosition
 				var itemToCheckRect: Rect2 = item.find_child('Area2D').get_child(0).get_shape().get_rect()
 				itemToCheckRect.position = item.global_position
-				print(selectedItemRect, itemToCheckRect)
 				isSlotFree = !selectedItemRect.intersects(itemToCheckRect)
 				if isSlotFree == false:
 					return
