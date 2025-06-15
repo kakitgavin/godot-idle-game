@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bh6enebonknhr"]
+[gd_scene load_steps=6 format=3 uid="uid://bh6enebonknhr"]
 
 [ext_resource type="Script" uid="uid://bkdxcrod4o8op" path="res://scripts/backpack_manager.gd" id="1_q7lps"]
 [ext_resource type="PackedScene" uid="uid://cafb5opd337iy" path="res://scenes/item_key.tscn" id="2_dihp5"]
+[ext_resource type="PackedScene" uid="uid://ddlkfue26eorx" path="res://scenes/item_dagger.tscn" id="3_vtni1"]
+[ext_resource type="PackedScene" uid="uid://3h0nxr4wa07w" path="res://scenes/item_spear.tscn" id="4_54rf2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q7lps"]
 size = Vector2(96, 96)
@@ -36,14 +38,19 @@ shape = SubResource("RectangleShape2D_q7lps")
 
 [node name="ItemKey" parent="." instance=ExtResource("2_dihp5")]
 layout_mode = 1
-offset_left = 32.0
 offset_top = 8.0
-offset_right = 32.0
+offset_right = 0.0
 offset_bottom = 8.0
 
-[node name="ItemKey2" parent="." instance=ExtResource("2_dihp5")]
+[node name="ItemDagger" parent="." instance=ExtResource("3_vtni1")]
 layout_mode = 1
-offset_left = 32.0
+offset_left = 96.0
+offset_top = 8.0
+offset_right = 96.0
+offset_bottom = 8.0
+
+[node name="ItemSpear" parent="." instance=ExtResource("4_54rf2")]
+layout_mode = 1
 offset_top = 40.0
-offset_right = 32.0
+offset_right = 0.0
 offset_bottom = 40.0

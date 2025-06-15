@@ -25,6 +25,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	#handle mouse drag and place logic
 	if mouseCanDrag:
 		if Input.is_action_just_pressed("mouseLeftClick"):
 			isDragging = true
@@ -38,18 +39,29 @@ func _process(delta: float) -> void:
 				selectedItem.global_position = previewPosition
 			else:
 				selectedItem.global_position = originalPos
+				
+	#items inside backpack is stored in array
+	var itemInBackpack = []
+	for area in area_2d.get_overlapping_areas():
+		itemInBackpack.append(area.get_parent())
 
 func _physics_process(delta: float) -> void:
+	#if selectedItem:
+		#print(selectedItem.find_child('Area2D').get_child(0).get_shape().get_rect())
+	
+	#check if item can be placed in backpack
 	if selectedItem and isDragging:
 		previewPosition = selectedItem.global_position.snapped(Vector2(32, 32))
-		var previewTransform = selectedItem.get_global_transform()
-		previewTransform.origin = previewPosition
 		var selectedItemShape: Shape2D = selectedItem.find_child('Area2D').get_child(0).get_shape()
 		isInBoundary = area_2d.overlaps_area(selectedItem.find_child('Area2D'))
 		for item: Control in get_tree().get_nodes_in_group('item'):
 			if item != selectedItem:
-				var shapeToCheck: Shape2D = item.find_child('Area2D').get_child(0).get_shape()
-				isSlotFree = !selectedItemShape.collide(previewTransform, shapeToCheck, item.get_global_transform()) 
+				var selectedItemRect: Rect2 = selectedItem.find_child('Area2D').get_child(0).get_shape().get_rect()
+				selectedItemRect.position = previewPosition
+				var itemToCheckRect: Rect2 = item.find_child('Area2D').get_child(0).get_shape().get_rect()
+				itemToCheckRect.position = item.global_position
+				print(selectedItemRect, itemToCheckRect)
+				isSlotFree = !selectedItemRect.intersects(itemToCheckRect)
 				if isSlotFree == false:
 					return
 
