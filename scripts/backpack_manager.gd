@@ -19,9 +19,9 @@ func _ready() -> void:
 	for i in range(9):
 		createSlot()
 	# connect item signals
-	for item:Control in get_tree().get_nodes_in_group('item'):
-		item.find_child('Panel').gui_input.connect(_cursor_in_item.bind(item))
-		item.find_child('Panel').mouse_exited.connect(_cursor_exit_item)
+	for item:TextureRect in get_tree().get_nodes_in_group('item'):
+		item.gui_input.connect(_cursor_in_item.bind(item))
+		item.mouse_exited.connect(_cursor_exit_item)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -58,7 +58,8 @@ func _physics_process(delta: float) -> void:
 		isInBoundary = backpackRect.encloses(selectedItemRect)
 		
 		#check collision between items
-		for item: Control in get_tree().get_nodes_in_group('item'):
+		isSlotFree = true #set to true first incase there is no item
+		for item: TextureRect in get_tree().get_nodes_in_group('item'):
 			if item != selectedItem:
 				var itemToCheckRect: Rect2 = item.find_child('Area2D').get_child(0).get_shape().get_rect()
 				itemToCheckRect.position = item.global_position

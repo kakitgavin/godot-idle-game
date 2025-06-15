@@ -16,8 +16,6 @@ const golbin = preload('res://scenes/entities/goblin.tscn')
 const hitEffect_1 = preload('res://scenes/vfx/hit_effect_1.tscn')
 const darkBolt = preload('res://scenes/vfx/dark_bolt.tscn')
 
-const itemKey = preload("res://scenes/item_key.tscn")
-
 var enemy: Entity
 var entityArray: Array = [orc, skeletonSoldier, slime, golbin]
 
