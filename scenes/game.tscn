@@ -155,6 +155,7 @@ collision_enabled = false
 
 [node name="Player" parent="." instance=ExtResource("2_yqjtg")]
 position = Vector2(160, 224)
+max_hp = 20.0
 attackPower = 2.0
 
 [node name="EnemyLocation" type="Marker2D" parent="."]

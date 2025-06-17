@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=2 format=3 uid="uid://cpscx7gvdh6hb"]
+
+[ext_resource type="Script" uid="uid://dmkhbj3xufko3" path="res://resources/weapon_stats.gd" id="1_qh7wp"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_qh7wp")
+name = "Short Sword"
+attackDamage = 2.0
+attackSpeed = 1.0
+block = 0.0
+metadata/_custom_type_script = "uid://dmkhbj3xufko3"

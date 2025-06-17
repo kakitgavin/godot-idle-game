@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://dof0ytesh3lb2"]
+
+[ext_resource type="Script" uid="uid://ctifsq728b2li" path="res://scripts/weapon.gd" id="1_l0wxx"]
+[ext_resource type="Resource" uid="uid://cpscx7gvdh6hb" path="res://resources/weapon_stats/short_sword_stats.tres" id="2_l0wxx"]
+[ext_resource type="Texture2D" uid="uid://cs1psku5cvq5a" path="res://assets/items.png" id="3_jknpq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kslv"]
+atlas = ExtResource("3_jknpq")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3ghi"]
+size = Vector2(30, 62)
+
+[node name="ShortSword" type="Control" groups=["item"]]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 32.0
+offset_bottom = 64.0
+script = ExtResource("1_l0wxx")
+weaponStats = ExtResource("2_l0wxx")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 50.0
+offset_bottom = 42.0
+rotation = 0.785397
+texture = SubResource("AtlasTexture_3kslv")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(16, 32)
+shape = SubResource("RectangleShape2D_r3ghi")

@@ -6,7 +6,9 @@ extends Control
 
 const dagger = preload("res://scenes/items/dagger.tscn")
 const spear = preload("res://scenes/items/spear.tscn")
+const shortSword = preload("res://scenes/items/short_sword.tscn")
 
+const weaponArray = [dagger, spear, shortSword]
 
 var mouseCanDrag = false
 var isDragging = false
@@ -41,7 +43,6 @@ func _process(delta: float) -> void:
 		elif Input.is_action_just_released("mouseLeftClick"):
 			isDragging = false
 			if isSlotFree and isInBoundary:
-				#selectedItem.global_position = previewPosition
 				selectedItem.position = previewPosition
 			else:
 				selectedItem.global_position = originalPos
@@ -55,7 +56,6 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	#check if item can be placed in backpack
 	if selectedItem and isDragging:
-		#previewPosition = selectedItem.global_position.snapped(Vector2(32, 32))
 		previewPosition = selectedItem.position.snapped(Vector2(32, 32))
 		
 		var selectedItemRect: Rect2 = selectedItem.find_child('Area2D').get_child(0).get_shape().get_rect()
@@ -71,7 +71,7 @@ func _physics_process(delta: float) -> void:
 		for item: Control in get_tree().get_nodes_in_group('item'):
 			if item != selectedItem:
 				var itemToCheckRect: Rect2 = item.find_child('Area2D').get_child(0).get_shape().get_rect()
-				itemToCheckRect.position = item.global_position
+				itemToCheckRect.position = item.position
 				isSlotFree = !selectedItemRect.intersects(itemToCheckRect)
 				if isSlotFree == false:
 					return
@@ -91,7 +91,7 @@ func _cursor_exit_item():
 		selectedItem = null
 
 func spawnItem():
-	var itemToAdd = dagger.instantiate()
+	var itemToAdd = weaponArray[randi_range(0, weaponArray.size() - 1)].instantiate()
 	add_child(itemToAdd)
 	itemToAdd.gui_input.connect(_cursor_in_item.bind(itemToAdd))
 	itemToAdd.mouse_exited.connect(_cursor_exit_item)
