@@ -7,6 +7,7 @@ extends Control
 const dagger = preload("res://scenes/items/dagger.tscn")
 const spear = preload("res://scenes/items/spear.tscn")
 
+
 var mouseCanDrag = false
 var isDragging = false
 var selectedItem: Control
@@ -23,7 +24,7 @@ func _ready() -> void:
 	for i in range(9):
 		createSlot()
 	# connect item signals
-	for item:TextureRect in get_tree().get_nodes_in_group('item'):
+	for item:Control in get_tree().get_nodes_in_group('item'):
 		item.gui_input.connect(_cursor_in_item.bind(item))
 		item.mouse_exited.connect(_cursor_exit_item)
 
@@ -56,7 +57,6 @@ func _physics_process(delta: float) -> void:
 	if selectedItem and isDragging:
 		#previewPosition = selectedItem.global_position.snapped(Vector2(32, 32))
 		previewPosition = selectedItem.position.snapped(Vector2(32, 32))
-		print(previewPosition)
 		
 		var selectedItemRect: Rect2 = selectedItem.find_child('Area2D').get_child(0).get_shape().get_rect()
 		selectedItemRect.position = previewPosition
@@ -68,17 +68,13 @@ func _physics_process(delta: float) -> void:
 		
 		#check collision between items
 		isSlotFree = true #set to true first incase there is no item
-		for item: TextureRect in get_tree().get_nodes_in_group('item'):
+		for item: Control in get_tree().get_nodes_in_group('item'):
 			if item != selectedItem:
 				var itemToCheckRect: Rect2 = item.find_child('Area2D').get_child(0).get_shape().get_rect()
 				itemToCheckRect.position = item.global_position
 				isSlotFree = !selectedItemRect.intersects(itemToCheckRect)
 				if isSlotFree == false:
 					return
-		
-		print(isSlotFree)
-		print(isInBoundary)
-		print(area_2d.position)
 
 func createSlot():
 	var newSlot = slotScene.instantiate()

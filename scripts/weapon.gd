@@ -1,3 +1,3 @@
-extends TextureRect
+extends Control
 
 @export var weaponStats: Resource

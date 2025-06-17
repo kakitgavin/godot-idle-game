@@ -11,12 +11,18 @@ region = Rect2(0, 0, 32, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3ghi"]
 size = Vector2(30, 30)
 
-[node name="Dagger" type="TextureRect" groups=["item"]]
+[node name="Dagger" type="Control" groups=["item"]]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 32.0
+offset_bottom = 32.0
+script = ExtResource("2_s30i6")
+weaponStats = ExtResource("3_dnyrw")
+
+[node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("AtlasTexture_3kslv")
-script = ExtResource("2_s30i6")
-weaponStats = ExtResource("3_dnyrw")
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(16, 16)

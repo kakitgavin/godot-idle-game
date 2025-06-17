@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0sxpwe140aai"]
+
+[ext_resource type="Texture2D" uid="uid://cs1psku5cvq5a" path="res://assets/items.png" id="1_l3uod"]
+[ext_resource type="Script" uid="uid://ctifsq728b2li" path="res://scripts/weapon.gd" id="2_gj357"]
+[ext_resource type="Resource" uid="uid://bty0fu5dkxc5y" path="res://resources/weapon_stats/spear_stats.tres" id="3_a5m2q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kslv"]
+atlas = ExtResource("1_l3uod")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3ghi"]
+size = Vector2(30, 62)
+
+[node name="sword" type="TextureRect" groups=["item"]]
+offset_right = 32.0
+offset_bottom = 64.0
+texture = SubResource("AtlasTexture_3kslv")
+script = ExtResource("2_gj357")
+weaponStats = ExtResource("3_a5m2q")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(16, 32)
+shape = SubResource("RectangleShape2D_r3ghi")

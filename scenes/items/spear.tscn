@@ -11,12 +11,18 @@ region = Rect2(0, 192, 32, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3ghi"]
 size = Vector2(30, 62)
 
-[node name="Spear" type="TextureRect" groups=["item"]]
+[node name="Spear" type="Control" groups=["item"]]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 32.0
+offset_bottom = 64.0
+script = ExtResource("2_yuihg")
+weaponStats = ExtResource("3_h413r")
+
+[node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 32.0
 offset_bottom = 64.0
 texture = SubResource("AtlasTexture_3kslv")
-script = ExtResource("2_yuihg")
-weaponStats = ExtResource("3_h413r")
 
 [node name="Area2D" type="Area2D" parent="."]
 
