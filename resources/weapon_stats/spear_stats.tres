@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=2 format=3 uid="uid://bty0fu5dkxc5y"]
+
+[ext_resource type="Script" uid="uid://dmkhbj3xufko3" path="res://resources/weapon_stats.gd" id="1_urcml"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_urcml")
+name = "Spear"
+attackDamage = 2.0
+attackSpeed = 1.0
+metadata/_custom_type_script = "uid://dmkhbj3xufko3"

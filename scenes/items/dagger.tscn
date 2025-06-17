@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://8pd3uemyyhlk"]
+
+[ext_resource type="Texture2D" uid="uid://cs1psku5cvq5a" path="res://assets/items.png" id="1_w4d1f"]
+[ext_resource type="Script" uid="uid://ctifsq728b2li" path="res://scripts/weapon.gd" id="2_s30i6"]
+[ext_resource type="Resource" uid="uid://bvmdvkpi61ra4" path="res://resources/weapon_stats/dagger_stats.tres" id="3_dnyrw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kslv"]
+atlas = ExtResource("1_w4d1f")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3ghi"]
+size = Vector2(30, 30)
+
+[node name="Dagger" type="TextureRect" groups=["item"]]
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_3kslv")
+script = ExtResource("2_s30i6")
+weaponStats = ExtResource("3_dnyrw")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_r3ghi")

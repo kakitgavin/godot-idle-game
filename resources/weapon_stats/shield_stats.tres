@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=2 format=3 uid="uid://b2b12576heqml"]
+
+[ext_resource type="Script" uid="uid://dmkhbj3xufko3" path="res://resources/weapon_stats.gd" id="1_jdcqs"]
+
+[resource]
+script = ExtResource("1_jdcqs")
+name = "shield"
+attackDamage = 0.0
+attackSpeed = 0.0
+block = 4.0
+metadata/_custom_type_script = "uid://dmkhbj3xufko3"

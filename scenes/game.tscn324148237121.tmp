@@ -165,17 +165,15 @@ follow_viewport_enabled = true
 
 [node name="BackpackManager" parent="CanvasLayer" instance=ExtResource("5_iywne")]
 unique_name_in_owner = true
-offset_left = 48.0
+offset_left = 32.0
 offset_top = 280.0
-offset_right = 48.0
+offset_right = 32.0
 offset_bottom = 280.0
 metadata/_edit_use_anchors_ = true
 
-[node name="NextLevelBtn" type="Button" parent="CanvasLayer"]
+[node name="Button" type="Button" parent="CanvasLayer"]
 offset_left = 120.0
 offset_top = 136.0
 offset_right = 210.0
 offset_bottom = 167.0
 text = "Next Level"
-
-[connection signal="pressed" from="CanvasLayer/NextLevelBtn" to="." method="_on_next_level_btn_pressed"]
