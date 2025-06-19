@@ -8,4 +8,5 @@ script = ExtResource("1_urcml")
 name = "Spear"
 attackDamage = 2.0
 attackSpeed = 1.0
+block = 0.0
 metadata/_custom_type_script = "uid://dmkhbj3xufko3"
